@@ -10,7 +10,7 @@
     <?php
     
     $lib = addslashes($_POST["library"]);
-    $legal = $str == str_replace(array( ';','&&','||'), ' ', $str) ? true:false;
+    $legal = $lib == str_replace(array( ';','&&','||'), ' ', $lib) ? true:false;
 
     if($legal) {
         $output = shell_exec("pip3 --trusted-host pypi.org --trusted-host files.pythonhosted.org install ".$lib);

@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
 
   server:
@@ -11,16 +13,18 @@ services:
       - ./web:/home/web
       - ./settings:/home/settings
     command: php -S 0.0.0.0:8000 -t /home/web
+    networks:
+      - internal_conn
 
   mariadb:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: bigdatabps
-    ports:
-      - "3306:3306"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./databases/mariadb:/var/lib/mysql
+    networks:
+      - internal_conn
 
   phpmyadmin:
     depends_on:
@@ -31,3 +35,9 @@ services:
       - "8081:80"
     environment:
       PMA_HOST: mariadb
+    networks:
+      - internal_conn
+
+networks:
+  internal_conn:
+      driver: bridge

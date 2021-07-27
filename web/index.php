@@ -47,7 +47,7 @@
     // $output = shell_exec('pip3 list');
     // echo "<pre>$output</pre>";
 
-    $string = file_get_contents("status.js");
+    $string = file_get_contents("status.json");
     $json_a = json_decode($string, true);
 
     foreach ($json_a as $key => $value) {

@@ -8,14 +8,20 @@
 <body>
 
     <?php
-
+    
     $lib = addslashes($_POST["library"]);
+    $legal = $str == str_replace(array( ';','&&','||'), ' ', $str) ? true:false;
 
-    $output = shell_exec("pip3 --trusted-host pypi.org --trusted-host files.pythonhosted.org install $lib");
-    echo "<pre>$output</pre>";
-
+    if($legal) {
+        $output = shell_exec("pip3 --trusted-host pypi.org --trusted-host files.pythonhosted.org install ".$lib);
+        echo "<pre>$output</pre>";
+    }
+    else{
+        echo 'Gotcha, You trying something bad :) ';
+    }
+    
     ?>
-
+    
 </body>
 
 </html>

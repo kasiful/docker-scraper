@@ -1,0 +1,33 @@
+services:
+
+  server:
+    build: .
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    volumes:
+      - ./airflow:/home/airflow
+      - ./scraper:/home/scraper
+      - ./web:/home/web
+      - ./settings:/home/settings
+    command: php -S 0.0.0.0:8000 -t /home/web
+
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: bigdatabps
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./databases/mariadb:/var/lib/mysql
+
+  phpmyadmin:
+    depends_on:
+      - mariadb
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports: 
+      - "8081:80"
+    environment:
+      PMA_HOST: mariadb

@@ -6,7 +6,7 @@ RUN apt-get update
 
 # pasang sertifikat bps agar bisa internetan
 # kalau copy satu file pakai COPY, kalau folder dan isinya pakai ADD
-ADD BPS_cert /usr/local/share/ca-certificates/BPS_cert
+ADD cert /usr/local/share/ca-certificates/cert
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
 

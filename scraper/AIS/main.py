@@ -112,7 +112,6 @@ def comtrade(date_from, date_to):
 
 
 
-
     # ###### PREVIEW DATA ######
     elem.find_element_by_id("preview").click()
 

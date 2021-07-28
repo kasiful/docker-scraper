@@ -1,0 +1,12 @@
+AIRFLOW_EMAIL=email@example.com
+AIRFLOW_PASSWORD=airflow
+AIRFLOW_USERNAME=airflow
+AIRFLOW_FIRSTNAME=Airflow
+AIRFLOW_LASTNAME=Airflow
+AIRFLOW_HOME=/home/airflow
+
+CERT_FOLDER=cert
+
+MYSQL_ROOT_PASSWORD=password
+
+URL_HOST=http://localhost
